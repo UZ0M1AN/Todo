@@ -1,9 +1,126 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* //////////////////////////////////////// */
+/* GENERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background-color: orangered;
+:root {
+    --prim: hsl(0, 45%, 46%);
+    --txt-lg: #eee;
+    --txt-dk: #333;
 }
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--txt-dk);
+    font-size: 2rem;
+}
+
+.container {
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 8fr 1fr;
+}
+
+/* COMBINATORS */
+header,
+nav {
+    padding: 2rem;
+}
+
+li {
+    transition: all .2s;
+    cursor: pointer;
+}
+
+/* //////////////////////////////////////// */
+/* HEADER */
+header {
+    background-color: var(--prim);
+
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 6rem;
+    color: var(--txt-lg);
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* //////////////////////////////////////// */
+/* NAV */
+nav {
+    background-color: hsla(0, 4%, 40%, .2);
+    height: 100%;
+    padding-top: .5rem;
+}
+
+ul {
+    list-style: none;
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+li {
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+li:hover {
+    background-color: hsla(0, 4%, 40%, .4);
+}
+
+.projects h3 {
+    font-size: 2.5rem;
+}
+
+/* //////////////////////////////////////// */
+/* DISPLAY */
+.display {
+    padding: 2rem 10rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+/* //////////////////////////////////////// */
+/* FOOTER */
+footer {
+    background-color: hsl(0, 4%, 40%);
+    padding: 2rem;
+    width: 100%;
+    text-align: center;
+
+    grid-column: span 2;
+}
+
+footer p {
+    color: var(--txt-lg);
+}
+/* //////////////////////////////////////// */
