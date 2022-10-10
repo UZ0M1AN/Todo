@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/3ab83d0a34.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./src/style.css">
-    <script src="./src/index.js" defer></script>
+    <script src="./src/index.js" type="module" defer></script>
 </head>
 <body>
     <div class="container">
@@ -18,10 +18,10 @@
         </header>
 
         <nav>
-            <ul>
-                <li><i class="fa-solid fa-inbox"></i><span>Inbox</span></li>
-                <li><i class="fa-solid fa-calendar-day"></i><span>Today</span></li>
-                <li><i class="fa-solid fa-calendar-week"></i><span>This week</span></li>
+            <ul class="nav-lis">
+                <li id="inbox" class="active"><i class="fa-solid fa-inbox"></i><span>Inbox</span></li>
+                <li id="today"><i class="fa-solid fa-calendar-day"></i><span>Today</span></li>
+                <li id="thisWeek"><i class="fa-solid fa-calendar-week"></i><span>This week</span></li>
             </ul>
 
             <div class="projects">
@@ -30,7 +30,24 @@
         </nav>
 
         <div class="display">
-            <h2>My display</h2>
+            <!-- <div class="inbox">
+                <h2>Inbox</h2>
+                <p class="add-task"><i class="fa-solid fa-plus"></i><span>Add Task</span></p>
+            </div> -->
+
+            <!-- <div class="form">
+                <input type="text">
+                <div class="btns">
+                    <button class="add">Add</button>
+                    <button class="cancel">Cancel</button>
+                </div>
+            </div> -->
+            <!-- <div class="today">
+                <h2>Today</h2>
+            </div>  
+            <div class="thisWeek">
+                <h2>This Week</h2> 
+            </div> -->
         </div>
 
         <footer>

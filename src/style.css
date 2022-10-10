@@ -13,6 +13,8 @@
     --prim: hsl(0, 45%, 46%);
     --txt-lg: #eee;
     --txt-dk: #333;
+
+    --brad: 5px;
 }
 
 html {
@@ -22,7 +24,7 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--txt-dk);
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .container {
@@ -39,9 +41,23 @@ nav {
     padding: 2rem;
 }
 
-li {
+li,
+.display p,
+button {
     transition: all .2s;
     cursor: pointer;
+}
+
+li:hover,
+.display p:hover {
+    background-color: hsla(0, 4%, 40%, .2);
+}
+
+input,
+.btns button {
+    padding: 1rem 1.5rem;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 /* //////////////////////////////////////// */
@@ -75,7 +91,6 @@ ul {
     list-style: none;
     padding-top: 2rem;
     margin-bottom: 3rem;
-    font-size: 1.8rem;
 
     display: flex;
     flex-direction: column;
@@ -84,15 +99,11 @@ ul {
 
 li {
     padding: 1rem 1.5rem;
-    border-radius: 5px;
+    border-radius: var(--brad);
 
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-li:hover {
-    background-color: hsla(0, 4%, 40%, .4);
 }
 
 .projects h3 {
@@ -107,7 +118,18 @@ li:hover {
 
 h2 {
     font-size: 3rem;
+    margin-bottom: 2rem;
 }
+
+.display p {
+    padding: 1rem 1.5rem;
+    border-radius: var(--brad);
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 
 /* //////////////////////////////////////// */
 /* FOOTER */
@@ -122,5 +144,58 @@ footer {
 
 footer p {
     color: var(--txt-lg);
+    font-size: 2rem;
 }
+
 /* //////////////////////////////////////// */
+/* FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input {
+    padding: 1rem 1.5rem;
+    font-family: inherit;
+    outline: none;
+    border: 1px solid #555;
+    border-radius: var(--brad);
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btns button {
+    font-family: inherit;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--brad);
+    width: 100%;
+}
+
+.btns button:hover {
+    filter: contrast(2);
+}
+
+.add {
+    background-color: hsla(120, 45%, 46%, .3);
+}
+
+.cancel {
+    background-color: hsla(0, 45%, 46%, .3);
+}
+
+/* //////////////////////////////////////// */
+/* HELPERS */
+.hidden {
+    display: none !important;
+}
+
+.active {
+    background-color: hsla(0, 4%, 40%, .2);
+}
