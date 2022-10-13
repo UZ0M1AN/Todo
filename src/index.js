@@ -12,17 +12,31 @@ import {html as taskForm} from './task-form.js';
 function init() {
     const display = document.querySelector('.display');
     display.insertAdjacentHTML('afterbegin', inbox);
+
+    // Set event on the 'form' to add new tasks
+    setForm();
+
     return display;
+}
+
+function setForm() {
+    form = document.querySelector('.add-task');
+    form.addEventListener('click', showForm);
 }
 
 
 // Event Handlers
 function displayTab(e) {
     const tab = e.target.closest('li');
+
+    // Show active nav link
     tabs.forEach(t => t.classList[t == tab ? 'add' : 'remove']('active'));
 
+    // Display tab
     display.innerHTML = '';
     display.insertAdjacentHTML('afterbegin', eval(tab.id));
+
+    if (tab.id == 'inbox') setForm();
 }
 
 function showForm(e) {
@@ -36,7 +50,7 @@ function showForm(e) {
     cancelBtn.addEventListener('click', hideForm);
 }
 
-function hideForm(e) {
+function hideForm() {
     document.querySelector('.inbox p').classList.remove('hidden');
     document.querySelector('.form').remove();
 }
@@ -51,13 +65,13 @@ function addEvent(e) {
 
 /////////////////////////////////////////////////////////////////////
 // DOM
+let form;
 const display = init();
 const tabs = document.querySelectorAll('.nav-lis li');
-const form = document.querySelector('.add-task');
 
 
 // Event Listeners
 tabs.forEach(tab => tab.addEventListener('click', displayTab));
-form.addEventListener('click', showForm);
+
 
 // Remember to solve the problem of the form's event not firing when you change the tab
