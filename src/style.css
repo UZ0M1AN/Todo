@@ -43,13 +43,16 @@ nav {
 
 li,
 .display p,
-button {
+button,
+.lt-side *,
+.rt-side .remove-task {
     transition: all .2s;
     cursor: pointer;
 }
 
 li:hover,
-.display p:hover {
+.display p:hover,
+.new-task:hover {
     background-color: hsla(0, 4%, 40%, .2);
 }
 
@@ -188,6 +191,52 @@ input {
 
 .cancel {
     background-color: hsla(0, 45%, 46%, .3);
+}
+
+/* //////////////////////////////////////// */
+/* NEW TASK */
+.new-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 1.5rem;
+    border-radius: var(--brad);
+    transition: all .2s;
+}
+
+.lt-side {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.task-checkbox {
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid #333;
+    border-radius: 50%;
+    padding: .5rem;
+
+    display: inline-block;
+}
+
+.rt-side {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* #task-date {
+    
+} */
+
+.remove-task {
+    opacity: 0;
+}
+
+.new-task:hover .remove-task {
+    opacity: 1;
 }
 
 /* //////////////////////////////////////// */

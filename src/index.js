@@ -6,6 +6,7 @@ import {html as inbox} from './inbox.js';
 import {html as today} from './today.js';
 import {html as thisWeek} from './this-week.js';
 import {html as taskForm} from './task-form.js';
+import {html as newTask} from './new-task.js';
 
 /////////////////////////////////////////////////////////////////////
 // Functions
@@ -55,13 +56,16 @@ function hideForm() {
     document.querySelector('.form').remove();
 }
 
-function addTask(e) {
+function addTask() {
+    const taskName = document.querySelector('.form input').value;
+    hideForm();
 
+    document.querySelector('.inbox p').insertAdjacentHTML('beforebegin', newTask);  
+
+    // Set the task name to equal the value typed in the form input
+    document.querySelector('.task-name').innerHTML = taskName;
 }
 
-function addEvent(e) {
-    console.log(e);
-}
 
 /////////////////////////////////////////////////////////////////////
 // DOM
@@ -74,4 +78,3 @@ const tabs = document.querySelectorAll('.nav-lis li');
 tabs.forEach(tab => tab.addEventListener('click', displayTab));
 
 
-// Remember to solve the problem of the form's event not firing when you change the tab
