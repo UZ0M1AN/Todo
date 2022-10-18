@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/UZ0M1AN/Todo#readme",
   "devDependencies": {
+    "eslint": "^8.25.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
