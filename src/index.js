@@ -7,6 +7,10 @@ import {html as today} from './today.js';
 import {html as thisWeek} from './this-week.js';
 import {html as taskForm} from './task-form.js';
 import {html as newTask} from './new-task.js';
+import {taskArr} from './state.js';
+// const dayjs = require('dayjs');
+
+// console.log(day('2022-10-29'))
 
 /////////////////////////////////////////////////////////////////////
 // Functions
@@ -73,11 +77,14 @@ function addTask() {
     // Hide the form input
     hideForm();
 
-    // Add new task
+    // Add new task in DOM and in taskArr
     document.querySelector('.inbox p').insertAdjacentHTML('beforebegin', newTask);  
+    taskArr.push({name: taskNameVal});
+    console.log(taskArr)
 
     // Set the task name to equal the value typed in the form input
-    const taskName = document.querySelector('.task-name');
+    const taskNames = [...document.querySelectorAll('.task-name')];
+    const taskName = taskNames[taskArr.findIndex(task => task.name == taskNameVal)];
     taskName.innerHTML = taskNameVal;
 
     // Change task name
@@ -90,8 +97,9 @@ function addTask() {
     const dateVal = document.querySelector('.date-val');
     const dateInput = document.querySelector('#task-date');
 
-    dateInput.addEventListener('change', setDate.bind(dateInput, dateVal));
+    dateInput.addEventListener('change', setDate.bind(dateInput, dateVal, taskNameVal));
     dateVal.addEventListener('click', showDatePicker.bind(dateVal, dateInput));
+
 
     // Cancel the task when checkbox is clicked
     const taskCheckbox = document.querySelector('.task-checkbox');
@@ -121,9 +129,12 @@ function setNewTaskName(elem) {
     this.classList.add('hidden');
 
     elem.innerHTML = newTaskName;
+
+    // Update the name in the taskArr
+    taskArr[taskArr.findIndex(task => task.name == elem.innerHTML)] = newTaskName;
 }
 
-function setDate(elem) {
+function setDate(elem, tNameVal) {
     const date = this.value;
 
     // Hide the input and display its value
@@ -131,6 +142,9 @@ function setDate(elem) {
     this.classList.add('hidden');
 
     elem.innerHTML = date;
+
+    // Add date to taskArr
+    taskArr[taskArr.findIndex(task => task.name == tNameVal)].date = date;
 }
 
 function showDatePicker(elem) {
@@ -163,9 +177,15 @@ function toggleTaskCancel() {
     taskCancelCounter++;
 }
 
-function removeTask() {
-    document.querySelector('.new-task').remove();
-}
+// function removeTask(tNameVal) {
+//     // Remove task in taskArr
+//     // taskArr.splice(taskArr.findIndex(task => task.name == tNameVal), 1);
+
+//     // Remove task in DOM
+//     const allTasks = [...document.querySelectorAll('.new-task')];
+//     const task = this.closest('.new-task');
+//     console.log(allTasks)
+// }
 
 
 /////////////////////////////////////////////////////////////////////
